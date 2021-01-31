@@ -1,0 +1,55 @@
+Warming up --------------------------------------
+[Person] Macro Generated - Full Hash
+                       144.306k i/100ms
+[Person] Macro Generated - Partial Hash
+                       204.972k i/100ms
+[Person] Macro Generated - Array
+                       214.407k i/100ms
+[Person] Dynamic Generated - Full Hash
+                       101.955k i/100ms
+[Person] Dynamic Generated - Partial Hash
+                       141.047k i/100ms
+[Person] Dynamic Generated - Array
+                       140.546k i/100ms
+Calculating -------------------------------------
+[Person] Macro Generated - Full Hash
+                          1.491M (± 3.4%) i/s -      7.504M in   5.040629s
+[Person] Macro Generated - Partial Hash
+                          1.908M (± 6.2%) i/s -      9.634M in   5.070731s
+[Person] Macro Generated - Array
+                          2.116M (± 3.6%) i/s -     10.720M in   5.074234s
+[Person] Dynamic Generated - Full Hash
+                        955.021k (± 3.8%) i/s -      4.792M in   5.025209s
+[Person] Dynamic Generated - Partial Hash
+                          1.483M (± 3.7%) i/s -      7.475M in   5.049487s
+[Person] Dynamic Generated - Array
+                          1.420M (± 3.8%) i/s -      7.168M in   5.054926s
+
+--------------------------------------------------------------------------------
+
+Warming up --------------------------------------
+[BigAttr] Macro Generated - Full Hash
+                        46.198k i/100ms
+[BigAttr] Macro Generated - Partial Hash
+                        43.043k i/100ms
+[BigAttr] Macro Generated - Array
+                       161.273k i/100ms
+[BigAttr] Dynamic Generated - Full Hash
+                        19.286k i/100ms
+[BigAttr] Dynamic Generated - Partial Hash
+                        50.507k i/100ms
+[BigAttr] Dynamic Generated - Array
+                        28.691k i/100ms
+Calculating -------------------------------------
+[BigAttr] Macro Generated - Full Hash
+                        458.072k (± 4.8%) i/s -      2.310M in   5.054855s
+[BigAttr] Macro Generated - Partial Hash
+                        432.518k (± 2.7%) i/s -      2.195M in   5.079269s
+[BigAttr] Macro Generated - Array
+                          1.576M (± 4.1%) i/s -      7.902M in   5.024196s
+[BigAttr] Dynamic Generated - Full Hash
+                        182.306k (± 5.4%) i/s -    925.728k in   5.093456s
+[BigAttr] Dynamic Generated - Partial Hash
+                        517.341k (± 4.2%) i/s -      2.626M in   5.086602s
+[BigAttr] Dynamic Generated - Array
+                        288.638k (± 3.0%) i/s -      1.463M in   5.073993s
