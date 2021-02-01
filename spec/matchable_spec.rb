@@ -15,6 +15,20 @@ RSpec.describe Matchable do
     end
   end
 
+  class InvalidPerson
+    include Matchable
+
+    deconstruct :new
+    deconstruct_keys :name, :age
+
+    attr_reader :name
+
+    def initialize(name, age)
+      @name = name
+      @age  = age
+    end
+  end
+
   class Card
     include Matchable
 
@@ -49,6 +63,7 @@ RSpec.describe Matchable do
   end
 
   let(:alice) { Person.new('Alice', 42) }
+  let(:bob) { InvalidPerson.new('Bob', 64) }
   let(:ace_of_spades) { Card.new('S', 'A') }
   let(:node) { Node[1, Node[2], Node[3], Node[4, Node[5]]] }
 
@@ -74,6 +89,14 @@ RSpec.describe Matchable do
 
       expect((node in [1, [*, 4, *]])).to eq(true)
     end
+
+    it 'will warn you if you miss a key with a more explicit error' do
+      error_message = /Original Error: undefined local variable or method `age' for/
+
+      expect { bob.deconstruct }.to raise_error(
+        Matchable::UnmatchedName, error_message
+      )
+    end
   end
 
   describe '#deconstruct_keys' do
@@ -97,6 +120,14 @@ RSpec.describe Matchable do
       expect((alice in {
         name: /^A/
       })).to eq(true)
+    end
+
+    it 'will warn you if you miss a key with a more explicit error' do
+      error_message = /Original Error: undefined local variable or method `age' for/
+
+      expect { bob.deconstruct_keys(nil) }.to raise_error(
+        Matchable::UnmatchedName, error_message
+      )
     end
   end
 end

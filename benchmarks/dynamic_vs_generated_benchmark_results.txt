@@ -1,55 +1,55 @@
 Warming up --------------------------------------
 [Person] Macro Generated - Full Hash
-                       144.306k i/100ms
+                       108.660k i/100ms
 [Person] Macro Generated - Partial Hash
-                       204.972k i/100ms
+                       150.641k i/100ms
 [Person] Macro Generated - Array
-                       214.407k i/100ms
+                       209.579k i/100ms
 [Person] Dynamic Generated - Full Hash
-                       101.955k i/100ms
+                       102.585k i/100ms
 [Person] Dynamic Generated - Partial Hash
-                       141.047k i/100ms
+                       154.093k i/100ms
 [Person] Dynamic Generated - Array
-                       140.546k i/100ms
+                       136.640k i/100ms
 Calculating -------------------------------------
 [Person] Macro Generated - Full Hash
-                          1.491M (± 3.4%) i/s -      7.504M in   5.040629s
+                          1.104M (± 3.0%) i/s -      5.542M in   5.025098s
 [Person] Macro Generated - Partial Hash
-                          1.908M (± 6.2%) i/s -      9.634M in   5.070731s
+                          1.657M (± 1.8%) i/s -      8.436M in   5.093239s
 [Person] Macro Generated - Array
-                          2.116M (± 3.6%) i/s -     10.720M in   5.074234s
+                          2.101M (± 3.8%) i/s -     10.689M in   5.095977s
 [Person] Dynamic Generated - Full Hash
-                        955.021k (± 3.8%) i/s -      4.792M in   5.025209s
+                        998.994k (± 2.1%) i/s -      5.027M in   5.033974s
 [Person] Dynamic Generated - Partial Hash
-                          1.483M (± 3.7%) i/s -      7.475M in   5.049487s
+                          1.484M (± 3.6%) i/s -      7.551M in   5.093305s
 [Person] Dynamic Generated - Array
-                          1.420M (± 3.8%) i/s -      7.168M in   5.054926s
+                          1.421M (± 2.5%) i/s -      7.105M in   5.002556s
 
 --------------------------------------------------------------------------------
 
 Warming up --------------------------------------
 [BigAttr] Macro Generated - Full Hash
-                        46.198k i/100ms
+                        62.462k i/100ms
 [BigAttr] Macro Generated - Partial Hash
-                        43.043k i/100ms
+                        57.960k i/100ms
 [BigAttr] Macro Generated - Array
-                       161.273k i/100ms
+                       159.136k i/100ms
 [BigAttr] Dynamic Generated - Full Hash
-                        19.286k i/100ms
+                        19.686k i/100ms
 [BigAttr] Dynamic Generated - Partial Hash
-                        50.507k i/100ms
+                        52.946k i/100ms
 [BigAttr] Dynamic Generated - Array
-                        28.691k i/100ms
+                        29.178k i/100ms
 Calculating -------------------------------------
 [BigAttr] Macro Generated - Full Hash
-                        458.072k (± 4.8%) i/s -      2.310M in   5.054855s
+                        644.864k (± 5.9%) i/s -      3.248M in   5.054710s
 [BigAttr] Macro Generated - Partial Hash
-                        432.518k (± 2.7%) i/s -      2.195M in   5.079269s
+                        580.784k (± 3.4%) i/s -      2.956M in   5.096195s
 [BigAttr] Macro Generated - Array
-                          1.576M (± 4.1%) i/s -      7.902M in   5.024196s
+                          1.568M (± 4.0%) i/s -      7.957M in   5.082464s
 [BigAttr] Dynamic Generated - Full Hash
-                        182.306k (± 5.4%) i/s -    925.728k in   5.093456s
+                        194.429k (± 3.2%) i/s -    984.300k in   5.068253s
 [BigAttr] Dynamic Generated - Partial Hash
-                        517.341k (± 4.2%) i/s -      2.626M in   5.086602s
+                        518.690k (± 3.7%) i/s -      2.594M in   5.008953s
 [BigAttr] Dynamic Generated - Array
-                        288.638k (± 3.0%) i/s -      1.463M in   5.073993s
+                        295.488k (± 2.1%) i/s -      1.488M in   5.038268s
