@@ -38,31 +38,59 @@ The above code will generate the following effective code within the `Card` clas
 
 ```ruby
 class Card
+  MATCHABLE_KEYS = %i(suit rank)
+  MATCHABLE_LAZY_VALUES = {
+    suit: -> o { o.suit },
+    rank: -> o { o.rank },
+  }
+
   def deconstruct
     to_a
+  rescue NameError => e
+    raise Matchable::UnmatchedName, e
   end
 
   def deconstruct_keys(keys)
-    deconstructed_values = {}
-
-    if keys.nil? || keys.include?(:suit)
-      deconstructed_values[:suit] = suit
+    if keys.nil?
+      return {
+        suit: suit,
+        rank: rank
+      }
     end
 
-    if keys.nil? || keys.include?(:rank)
-      deconstructed_values[:rank] = rank
+    deconstructed_values = {}
+    valid_keys           = MATCHABLE_KEYS & keys
+
+    valid_keys.each do |key|
+      deconstructed_values[key] = MATCHABLE_LAZY_VALUES[key].call(self)
     end
 
     deconstructed_values
+  rescue NameError => e
+    raise Matchable::UnmatchedName, e
   end
 end
 ```
 
-It should be noted that `nil` is passed to `deconstruct_keys` when no values are provided or when a `**rest` pattern is present in the match. In these cases all values should be returned, hence the `keys.nil? ||` check, which is correct.
+It should be noted that `nil` is passed to `deconstruct_keys` when no values are provided or when a `**rest` pattern is present in the match. In these cases all values should be returned, hence the `if keys.nil?` check.
 
 The generated code is optimized to only include keys which are being directly matched against, guarding against loading more data than is necessary, and all in one line of code above.
 
-In the case of `deconstruct` this method could be anything as long as it returns an `Array`. `to_a` is the most intuitive of these methods, but calling this is not required if you have more unique usecases.
+In the case of `deconstruct` this method could be anything as long as it returns an `Array`. `to_a` is the most intuitive of these methods, but calling this is not required if you have more unique use-cases.
+
+All calls are wrapped in a `rescue` to `NameError` which will re-raise the error with some additional warnings to warn implementers that they may have forgotten to add some interface methods for Matchable to work properly.
+
+#### Why `MATCHABLE_LAZY_VALUES`?
+
+It's faster than `public_send` and allowed me to unfold one layer of loops. As this type of macro-programming requires pre-evaluation for "compiling" we cannot do something like this, no matter how much I'd like to:
+
+```ruby
+valid_keys.each do |key|
+  deconstructed_values[key] = ${key}
+end
+```
+
+While `public_send` works here I'd love to directly interpolate the method call here, hence the faked Macro-style syntax.
 
 ### Deconstructing `new`
 
@@ -90,6 +118,8 @@ By deconstructing on `new` the following code will be generated for `deconstruct
 class Person
   def deconstruct
     [name, age]
+  rescue NameError => e
+    raise Matchable::UnmatchedName, e
   end
 end
 ```
